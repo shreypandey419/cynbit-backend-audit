@@ -4,7 +4,7 @@
 |---|---|---|---|
 | NET-01 | Architecture / Crawlability | Low | Two-hop redirect (308 then 307); apex vs www canonical conflict |
 | SEC-01 | Security | Low | Hardening headers not observed (all responses) |
-| PERF-02 | Performance | Low | Sitemap computed on demand in iad1; 3.0 s TTFB, cache MISS |
+| PERF-02 | Performance | Low | Sitemap cache MISS and 3.0 s TTFB; region interpretation unverified |
 | EMAIL-01 | Email security | Low | DMARC p=none without rua; DKIM not observed at standard selectors |
 | INFO-01 | Info exposure | Info | robots.txt names /api/, /admin/, /portal/ |
 | INFO-02 | Security config | Info | `ACAO: *` on HTML and static responses |

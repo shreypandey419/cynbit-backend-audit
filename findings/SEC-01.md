@@ -5,7 +5,7 @@
 | Category | Security (hardening) |
 | Severity | Low — best-practice gap on a mostly static marketing site; no exploit demonstrated |
 | Evidence | HSTS `strict-transport-security: max-age=63072000` is present on every HTTPS response. In **all** captured HTTPS responses (`https_apex.headers`, `www_head_compressed.headers`, `notfound.headers`, `sitemap.headers`, asset headers) these are absent: `x-content-type-options`, `x-frame-options` / CSP `frame-ancestors`, `referrer-policy`, `permissions-policy`, `content-security-policy`. |
-| Impact | No `nosniff` (MIME sniffing), no framing protection (clickjacking possible in principle), no CSP (no script-injection backstop). HSTS has no `includeSubDomains`/`preload`. |
+| Impact | Without `nosniff`, MIME sniffing may be possible for some responses; without framing protection, clickjacking may be possible. No CSP backstop was observed. These are theoretical risks; no exploit was demonstrated. HSTS lacks `includeSubDomains` and `preload` in the captured value. |
 | Recommendation | Add the headers in `next.config.js`. Start CSP as Report-Only: the page uses Google Tag Manager/GA (`G-LK6CQWCWX0`) and a Google Fonts stylesheet. |
 | Effort | S (headers) / M (CSP tuning) |
 
