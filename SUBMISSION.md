@@ -1,7 +1,7 @@
 # Submission
 
 ## Links
-- Primary: your GitHub repository URL (root; README links everything)  ← fill in after pushing
+- Primary: https://github.com/shreypandey419/cynbit-backend-audit
 - Additional (optional): REPORT.md · findings/INDEX.md · docs/architecture.md · docs/improvements.md
 
 ## Execution Notes (≤150 words)
