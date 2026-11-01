@@ -1,0 +1,16 @@
+### Run these ONLY against your own local server (localhost), never against cynbit.in
+
+### Health
+GET http://localhost:3000/health
+
+### Valid contact
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{ "name": "Test User", "email": "test@example.com", "message": "Hello, this is a test message." }
+
+### Invalid contact (expect 422)
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{ "name": "a", "email": "bad", "message": "x" }

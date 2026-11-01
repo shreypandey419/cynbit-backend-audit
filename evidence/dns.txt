@@ -1,0 +1,33 @@
+# Public DNS lookups for cynbit.in  (2026-11-01T08:07:24Z)
+
+## A cynbit.in
+216.198.79.1
+
+## AAAA cynbit.in
+
+## MX cynbit.in
+0 cynbit-in.mail.protection.outlook.com.
+
+## NS cynbit.in
+ns34.domaincontrol.com.
+ns33.domaincontrol.com.
+
+## TXT cynbit.in
+"google-site-verification=SUGzGG8ggu0KHqJ3k5CGDi8jn4fIbdiLuC5onyPuC9U"
+"google-site-verification=HlFN-XoAM8jcNR4FStVSkoxPoA_q78YrXiRGwNjDHwQ"
+"v=spf1 include:secureserver.net -all"
+"NETORG20603639.onmicrosoft.com"
+
+## CAA cynbit.in
+
+## TXT _dmarc.cynbit.in
+"v=DMARC1; p=none;"
+
+## CNAME selector1._domainkey.cynbit.in
+
+## CNAME selector2._domainkey.cynbit.in
+
+## A www.cynbit.in
+e12d688042344235.vercel-dns-017.com.
+64.29.17.1
+216.198.79.1

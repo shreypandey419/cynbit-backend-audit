@@ -1,0 +1,16 @@
+HTTP/2 200 
+access-control-allow-origin: *
+age: 23276
+cache-control: public,max-age=31536000,immutable
+content-disposition: inline; filename="page-786d2581113641b8.js"
+content-encoding: br
+content-type: application/javascript; charset=utf-8
+date: Sun, 01 Nov 2026 08:07:24 GMT
+etag: W/"f7d82497b515e8edae4195aa939b0dcf"
+last-modified: Sun, 01 Nov 2026 01:39:27 GMT
+server: Vercel
+strict-transport-security: max-age=63072000
+x-matched-path: /_next/static/chunks/app/(marketing)/page-786d2581113641b8.js
+x-vercel-cache: HIT
+x-vercel-id: bom1::r8xmx-1793520444269-8f742b77aa52
+

@@ -1,0 +1,16 @@
+HTTP/2 200 
+access-control-allow-origin: *
+age: 12825
+cache-control: public,max-age=31536000,immutable
+content-disposition: inline; filename="layout-db39ce8334f77a17.js"
+content-encoding: br
+content-type: application/javascript; charset=utf-8
+date: Sun, 01 Nov 2026 08:07:22 GMT
+etag: W/"f7f2bec0701ed7c312353ed7f82fb62e"
+last-modified: Sun, 01 Nov 2026 04:33:36 GMT
+server: Vercel
+strict-transport-security: max-age=63072000
+x-matched-path: /_next/static/chunks/app/(marketing)/layout-db39ce8334f77a17.js
+x-vercel-cache: HIT
+x-vercel-id: bom1::m7brx-1793520442101-84c56b0c35d6
+

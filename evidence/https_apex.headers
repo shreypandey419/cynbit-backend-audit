@@ -1,0 +1,9 @@
+HTTP/2 307 
+cache-control: public, max-age=0, must-revalidate
+content-type: text/plain
+date: Sun, 01 Nov 2026 08:06:52 GMT
+location: https://www.cynbit.in/
+server: Vercel
+strict-transport-security: max-age=63072000
+x-vercel-id: bom1::fxrq4-1793520412746-dcd57af2e392
+
