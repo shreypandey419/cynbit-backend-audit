@@ -5,7 +5,7 @@ Role: Backend Developer Intern · Date: 1 Nov 2026 · Scope: passive, publicly o
 > Items marked **PENDING** need browser results (contact form, cookies, Lighthouse, SSL Labs) or one extra GET. Everything else is backed by files in `evidence/`.
 
 ## 1. Executive summary
-cynbit.in is a statically prerendered Next.js site on Vercel, served from the CDN cache over TLS 1.3 with HSTS, Brotli-compressed HTML (15.4 KB on the wire) and immutable Brotli-compressed assets, and a correct branded 404. No directly exploitable issue was observed (0 High, 0 Medium). Four Low findings: a two-hop redirect with conflicting canonical host signals (NET-01), missing browser hardening headers (SEC-01), a sitemap computed on demand in a distant region with a 3.0 s TTFB sample (PERF-02), and email authentication that is monitoring-only (DMARC `p=none` without reporting) with DKIM not observed at the standard selectors (EMAIL-01). The contact form's server-side behaviour could not be determined without submitting it, which a passive audit does not do; what is observable from public files is described in section 4.
+cynbit.in is a statically prerendered Next.js site on Vercel, served from the CDN cache over TLS 1.3 with HSTS, Brotli-compressed HTML (15.4 KB on the wire) and immutable Brotli-compressed assets, and a correct branded 404. No directly exploitable issue was observed (0 High, 0 Medium). Four Low findings: a two-hop redirect with conflicting canonical host signals (NET-01), missing browser hardening headers (SEC-01), a sitemap response that was a cache MISS with a 3.0 s TTFB sample (PERF-02), and email authentication that is monitoring-only (DMARC `p=none` without reporting) with DKIM not observed at the standard selectors (EMAIL-01). The contact form's server-side behaviour could not be determined without submitting it, which a passive audit does not do; what is observable from public files is described in section 4.
 
 ## 2. Scope, methodology, ethics
 - Passive only: ordinary GET/HEAD requests, offline analysis of saved responses, public DNS lookups, one TLS handshake.
@@ -14,7 +14,7 @@ cynbit.in is a statically prerendered Next.js site on Vercel, served from the CD
 - Requests: all GET/HEAD, sequential, with the User-Agent `CynbitAssessment-PassiveAudit/1.0 (internship assessment)`. (a) A first manual capture on 2026-10-31 ~18:27 UTC (at least 7 requests, made before the log existed and therefore not listed in it); (b) a scripted run on 2026-11-01 08:06–08:07 UTC (`scripts/collect-evidence.sh`, 15 requests, ≥2 s apart; the script's default cap of 25 was a self-imposed limit, not an assessment rule); (c) 15 manual GETs on 2026-11-01 (#16 homepage with `Accept-Encoding`, #17 `/contact`, #18–#30 the public static JS chunks that the contact page loads). `docs/request-log.md` lists 30 requests (#1–#30). The assessment's only constraint is passive, authorized testing; no request-count limit was specified. No load was generated and no state-changing request was made.
 
 ## 3. Observed architecture
-Vercel (edge `bom1`), Next.js App Router with prerendered pages, a dynamic sitemap route computed in `iad1`, GA via GTM, Google Fonts, DNS at GoDaddy, mail at Microsoft 365. Details and confidence levels: `findings/ARCH-01.md`, `docs/architecture.md`.
+Vercel (edge `bom1`), Next.js App Router with prerendered pages, a sitemap route whose single captured response was a cache MISS and whose `x-vercel-id` includes `iad1` (the region interpretation is unverified), GA via GTM, Google Fonts, DNS at GoDaddy, mail at Microsoft 365. Details and confidence levels: `findings/ARCH-01.md`, `docs/architecture.md`.
 
 ## 4. API and payload observations
 - The homepage HTML has no `<form>`, no `/api/` URL and no `fetch(` call.
@@ -27,7 +27,7 @@ Vercel (edge `bom1`), Next.js App Router with prerendered pages, a dynamic sitem
 |---|---|---|---|
 | NET-01 | Architecture / Crawlability | Low | 308→307 redirect chain; apex/www canonical conflict |
 | SEC-01 | Security | Low | Hardening headers not observed |
-| PERF-02 | Performance | Low | Sitemap computed in iad1, 3.0 s TTFB, MISS |
+| PERF-02 | Performance | Low | Sitemap cache MISS and 3.0 s TTFB; region interpretation unverified |
 | EMAIL-01 | Email security | Low | DMARC p=none without rua; DKIM not observed |
 | INFO-01 | Info exposure | Info | robots.txt names /api/, /admin/, /portal/ |
 | INFO-02 | Security config | Info | `ACAO: *` on HTML/static |

@@ -4,7 +4,7 @@
 graph TD
     U[Visitor / crawler] -->|HTTPS, TLS 1.3| E[Vercel edge - bom1]
     E -->|prerendered, x-vercel-cache HIT| P[Next.js App Router pages]
-    E -->|dynamic route, MISS, ~3 s| S[Sitemap function - iad1]
+    E -->|cache MISS, ~3 s TTFB, x-vercel-id includes iad1| S[Sitemap route]
     P --> GA[Google Tag Manager / GA]
     P --> GF[Google Fonts stylesheet]
     P -.->|/contact - not captured| F[Contact form backend - unknown]
